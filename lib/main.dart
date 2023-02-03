@@ -31,7 +31,7 @@ class _QuizPageState extends State<QuizPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Expanded(
+        const Expanded(
           flex: 5,
           child: Padding(
             padding: EdgeInsets.all(10.0),
@@ -49,11 +49,13 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
-            child: FlatButton(
-              textColor: Colors.white,
-              color: Colors.green,
-              child: Text(
+            padding: const EdgeInsets.all(15.0),
+            child: TextButton(
+              style: ButtonStyle(
+                iconColor: MaterialStateProperty.resolveWith(
+                    Colors.green as MaterialPropertyResolver<Color?>),
+              ),
+              child: const Text(
                 'True',
                 style: TextStyle(
                   color: Colors.white,
@@ -68,10 +70,13 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
-            child: FlatButton(
-              color: Colors.red,
-              child: Text(
+            padding: const EdgeInsets.all(15.0),
+            child: TextButton(
+              style: ButtonStyle(
+                iconColor: MaterialStateProperty.resolveWith(
+                    Colors.red as MaterialPropertyResolver<Color?>),
+              ),
+              child: const Text(
                 'False',
                 style: TextStyle(
                   fontSize: 20.0,
