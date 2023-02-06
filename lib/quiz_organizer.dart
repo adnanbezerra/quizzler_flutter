@@ -4,33 +4,31 @@ class QuizOrganizer {
   int _questionNumber = 0;
 
   final List<Question> _questionsList = <Question>[
-    Question(q: 'Some cats are actually allergic to humans', a: true),
-    Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
+    Question('Some cats are actually allergic to humans', true),
+    Question('You can lead a cow down stairs but not up stairs.', false),
+    Question('Approximately one quarter of human bones are in the feet.', true),
+    Question('A slug\'s blood is green.', true),
+    Question('Buzz Aldrin\'s mother\'s maiden name was \"Moon\".', true),
+    Question('It is illegal to pee in the Ocean in Portugal.', true),
     Question(
-        q: 'Approximately one quarter of human bones are in the feet.',
-        a: true),
-    Question(q: 'A slug\'s blood is green.', a: true),
-    Question(q: 'Buzz Aldrin\'s mother\'s maiden name was \"Moon\".', a: true),
-    Question(q: 'It is illegal to pee in the Ocean in Portugal.', a: true),
+        'No piece of square dry paper can be folded in half more than 7 times.',
+        false),
     Question(
-        q: 'No piece of square dry paper can be folded in half more than 7 times.',
-        a: false),
+        'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
+        true),
     Question(
-        q: 'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
-        a: true),
+        'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
+        false),
     Question(
-        q: 'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
-        a: false),
+        'The total surface area of two human lungs is approximately 70 square metres.',
+        true),
+    Question('Google was originally called \"Backrub\".', true),
     Question(
-        q: 'The total surface area of two human lungs is approximately 70 square metres.',
-        a: true),
-    Question(q: 'Google was originally called \"Backrub\".', a: true),
+        'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
+        true),
     Question(
-        q: 'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
-        a: true),
-    Question(
-        q: 'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
-        a: true),
+        'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
+        true),
   ];
 
   String getQuestionText() {
