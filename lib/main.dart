@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import 'quiz_organizer.dart';
 
@@ -38,25 +39,37 @@ class _QuizPageState extends State<QuizPage> {
   void checkAnswer(bool userPickedAnswer) {
     bool correctAnswer = quizOrganizer.getQuestionAnswer();
 
-    if (userPickedAnswer == correctAnswer) {
-      scoreKeeper.add(
-        const Icon(
-          Icons.check,
-          color: Colors.green,
-        ),
-      );
-    } else {
-      scoreKeeper.add(
-        const Icon(
-          Icons.close,
-          color: Colors.red,
-        ),
-      );
-    }
+    setState(
+      () {
+        if (quizOrganizer.isFinished()) {
+          Alert(
+                  context: context,
+                  title: "It's Over",
+                  desc: "It has been finished. Give up.")
+              .show();
 
-    setState(() {
-      quizOrganizer.nextQuestion();
-    });
+          quizOrganizer.reset();
+          scoreKeeper = [];
+        } else {
+          if (userPickedAnswer == correctAnswer) {
+            scoreKeeper.add(
+              const Icon(
+                Icons.check,
+                color: Colors.green,
+              ),
+            );
+          } else {
+            scoreKeeper.add(
+              const Icon(
+                Icons.close,
+                color: Colors.red,
+              ),
+            );
+          }
+          quizOrganizer.nextQuestion();
+        }
+      },
+    );
   }
 
   @override

@@ -46,4 +46,13 @@ class QuizOrganizer {
       _questionNumber++;
     }
   }
+
+  bool isFinished() {
+    if (_questionNumber == _questionsList.length - 1) return true;
+    return false;
+  }
+
+  void reset() {
+    _questionNumber = 0;
+  }
 }
