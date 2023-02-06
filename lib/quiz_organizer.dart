@@ -1,7 +1,9 @@
 import 'package:quizzler_flutter/question.dart';
 
 class QuizOrganizer {
-  List<Question> questionsList = <Question>[
+  int _questionNumber = 0;
+
+  final List<Question> _questionsList = <Question>[
     Question(q: 'Some cats are actually allergic to humans', a: true),
     Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
     Question(
@@ -30,4 +32,18 @@ class QuizOrganizer {
         q: 'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
         a: true),
   ];
+
+  String getQuestionText() {
+    return _questionsList[_questionNumber].questionText;
+  }
+
+  bool getQuestionAnswer() {
+    return _questionsList[_questionNumber].questionAnswer;
+  }
+
+  void nextQuestion() {
+    if (_questionNumber < _questionsList.length - 1) {
+      _questionNumber++;
+    }
+  }
 }

@@ -35,7 +35,29 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = <Widget>[];
 
-  int questionNumber = 0;
+  void checkAnswer(bool userPickedAnswer) {
+    bool correctAnswer = quizOrganizer.getQuestionAnswer();
+
+    if (userPickedAnswer == correctAnswer) {
+      scoreKeeper.add(
+        const Icon(
+          Icons.check,
+          color: Colors.green,
+        ),
+      );
+    } else {
+      scoreKeeper.add(
+        const Icon(
+          Icons.close,
+          color: Colors.red,
+        ),
+      );
+    }
+
+    setState(() {
+      quizOrganizer.nextQuestion();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +71,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizOrganizer.questionsList[questionNumber].questionText,
+                quizOrganizer.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,
@@ -75,18 +97,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer =
-                    quizOrganizer.questionsList[questionNumber].questionAnswer;
-
-                if (correctAnswer == true) {
-                  print('User got it right!');
-                } else {
-                  print('User got it wrong');
-                }
-
-                setState(() {
-                  questionNumber++;
-                });
+                checkAnswer(true);
               },
             ),
           ),
@@ -107,18 +118,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer =
-                    quizOrganizer.questionsList[questionNumber].questionAnswer;
-
-                if (correctAnswer == false) {
-                  print('User got it right!');
-                } else {
-                  print('User got it wrong');
-                }
-
-                setState(() {
-                  questionNumber++;
-                });
+                checkAnswer(false);
               },
             ),
           ),
